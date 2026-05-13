@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiUpload, FiFile, FiCheckCircle, FiAlertCircle, FiInfo, FiImage, FiFileText } from 'react-icons/fi';
+import { FiUpload, FiCheckCircle, FiAlertCircle, FiInfo, FiImage, FiFileText } from 'react-icons/fi';
 import SearchBar from '../components/SearchBar';
 import axios from 'axios';
 

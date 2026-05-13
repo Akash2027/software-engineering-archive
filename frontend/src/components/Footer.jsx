@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiGithub, FiHeart, FiBook, FiMail, FiMapPin } from 'react-icons/fi';
+import { FiHeart, FiBook, FiMail, FiMapPin } from 'react-icons/fi';
 
 const Footer = () => {
   return (
@@ -45,7 +45,7 @@ const Footer = () => {
             <ul className="space-y-2 text-gray-400 text-sm">
               <li className="flex items-center space-x-2">
                 <FiMail className="text-primary" />
-                <span>support@archive.com</span>
+                <span>support@vitarchive.com</span>
               </li>
               <li className="flex items-center space-x-2">
                 <FiMapPin className="text-primary" />

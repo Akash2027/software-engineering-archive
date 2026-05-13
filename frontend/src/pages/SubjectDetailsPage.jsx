@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from 'react';
 import { FiDownload, FiFileText, FiArrowLeft, FiBookOpen, FiClock, FiEye, FiImage } from 'react-icons/fi';
 import axios from 'axios';
 
