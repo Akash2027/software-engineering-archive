@@ -1,9 +1,8 @@
 import os
-from sqlalchemy import create_engine, Column, String, Integer, DateTime, Text
+from sqlalchemy import create_engine, Column, String, Integer, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
-import uuid
 
 # Use /tmp for SQLite on Render (writable directory)
 if os.environ.get('RENDER'):
@@ -43,6 +42,7 @@ class Note(Base):
     file_name = Column(String)
     uploaded_at = Column(DateTime, default=datetime.now)
 
+# Create tables
 Base.metadata.create_all(bind=engine)
 
 def get_db():
