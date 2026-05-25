@@ -22,7 +22,8 @@ const HomePage = () => {
 
   const fetchStats = async () => {
     try {
-      const response = await axios.get(`${API_URL}/stats`);
+      //const response = await axios.get(`${API_URL}/stats`);
+      const response = await axios.get('https://software-engineering-archive-backend.onrender.com/api/stats');
       setStats(response.data);
     } catch (error) {
       console.error('Error fetching stats:', error);

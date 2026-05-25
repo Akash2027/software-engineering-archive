@@ -3,7 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { FiDownload, FiFileText, FiArrowLeft, FiBookOpen, FiClock, FiEye, FiImage } from 'react-icons/fi';
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
+//const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
+const API_URL = 'https://software-engineering-archive-backend.onrender.com/api';
 
 const SubjectDetailsPage = () => {
   const { courseCode } = useParams();

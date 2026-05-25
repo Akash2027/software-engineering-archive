@@ -89,7 +89,8 @@ const UploadPapersPage = () => {
     uploadData.append('slot', formData.slot);
 
     try {
-      const response = await axios.post(`${API_URL}/upload-paper`, uploadData, {
+      //const response = await axios.post(`${API_URL}/upload-paper`, uploadData, {
+      const response = await axios.post('https://software-engineering-archive-backend.onrender.com/api/upload-paper', uploadData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       

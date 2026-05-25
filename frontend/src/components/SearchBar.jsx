@@ -24,7 +24,8 @@ const SearchBar = ({ onCourseSelect, placeholder = "Search by course code or nam
       if (query.length >= 1) {
         setIsLoading(true);
         try {
-          const response = await axios.get(`http://localhost:8000/api/search?q=${encodeURIComponent(query)}`);
+          //const response = await axios.get(`http://localhost:8000/api/search?q=${encodeURIComponent(query)}`);
+          const response = await axios.get(`https://software-engineering-archive-backend.onrender.com/api/search?q=${query}`);
           setSuggestions(response.data);
           setShowSuggestions(true);
         } catch (error) {
