@@ -4,7 +4,7 @@ import { FiSearch, FiUpload, FiFileText, FiTrendingUp, FiBookOpen, FiDownload, F
 import SearchBar from '../components/SearchBar';
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
+const API_URL = 'https://software-engineering-archive-backend.onrender.com/api';
 
 const HomePage = () => {
   const [stats, setStats] = useState({
@@ -20,18 +20,17 @@ const HomePage = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const fetchStats = async () => {
-    try {
-      //const response = await axios.get(`${API_URL}/stats`);
-      const response = await axios.get('https://software-engineering-archive-backend.onrender.com/api/stats');
-      setStats(response.data);
-    } catch (error) {
-      console.error('Error fetching stats:', error);
-      setStats({ totalPapers: 0, totalNotes: 0, totalCourses: 85 });
-    } finally {
-      setLoading(false);
-    }
-  };
+const fetchStats = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/stats`);
+    setStats(response.data);
+  } catch (error) {
+    console.error('Error fetching stats:', error);
+    setStats({ totalPapers: 0, totalNotes: 0, totalCourses: 85 });
+  } finally {
+    setLoading(false);
+  }
+};
 
   const features = [
     {

@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FiSearch, FiX } from 'react-icons/fi';
 import axios from 'axios';
 
+// HARDCODED BACKEND URL - NO ENVIRONMENT VARIABLES
+const API_URL = 'https://software-engineering-archive-backend.onrender.com/api';
+
 const SearchBar = ({ onCourseSelect, placeholder = "Search by course code or name..." }) => {
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
@@ -24,7 +27,7 @@ const SearchBar = ({ onCourseSelect, placeholder = "Search by course code or nam
       if (query.length >= 1) {
         setIsLoading(true);
         try {
-          //const response = await axios.get(`http://localhost:8000/api/search?q=${encodeURIComponent(query)}`);
+          // USING HARDCODED BACKEND URL
           const response = await axios.get(`https://software-engineering-archive-backend.onrender.com/api/search?q=${query}`);
           setSuggestions(response.data);
           setShowSuggestions(true);
@@ -81,7 +84,6 @@ const SearchBar = ({ onCourseSelect, placeholder = "Search by course code or nam
         )}
       </div>
 
-      {/* Suggestions Dropdown */}
       {showSuggestions && (
         <div className="absolute z-50 w-full mt-2 bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden animate-fadeIn max-h-96 overflow-y-auto">
           {isLoading && (
