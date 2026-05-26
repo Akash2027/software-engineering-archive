@@ -3,14 +3,21 @@ from sqlalchemy import create_engine, Column, String, Integer, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
+import urllib.parse
 
-# Use /tmp for SQLite on Render (writable directory)
-if os.environ.get('RENDER'):
-    DATABASE_URL = "sqlite:////tmp/vit_archive.db"
+# Get database URL from environment variable
+DATABASE_URL = os.environ.get('DATABASE_URL', 'sqlite:///./vit_archive.db')
+
+# Fix for Render's PostgreSQL URL format
+if DATABASE_URL and DATABASE_URL.startswith('postgres://'):
+    DATABASE_URL = DATABASE_URL.replace('postgres://', 'postgresql://', 1)
+
+# Create engine
+if DATABASE_url and 'sqlite' in DATABASE_URL:
+    engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 else:
-    DATABASE_URL = "sqlite:///./vit_archive.db"
+    engine = create_engine(DATABASE_URL, pool_pre_ping=True)
 
-engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
