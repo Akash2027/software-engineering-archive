@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FiSearch, FiX } from 'react-icons/fi';
 import axios from 'axios';
 
-// HARDCODED BACKEND URL - NO ENVIRONMENT VARIABLES
-const API_URL = 'https://software-engineering-archive-backend.onrender.com/api';
+// DIRECT HARDCODED BACKEND URL - THIS IS CORRECT
+const BACKEND_URL = 'https://software-engineering-archive-backend.onrender.com';
 
 const SearchBar = ({ onCourseSelect, placeholder = "Search by course code or name..." }) => {
   const [query, setQuery] = useState('');
@@ -27,8 +27,8 @@ const SearchBar = ({ onCourseSelect, placeholder = "Search by course code or nam
       if (query.length >= 1) {
         setIsLoading(true);
         try {
-          // USING HARDCODED BACKEND URL
-          const response = await axios.get(`https://software-engineering-archive-backend.onrender.com/api/search?q=${query}`);
+          // THIS IS THE CORRECT URL - NO localhost
+          const response = await axios.get(`${BACKEND_URL}/api/search?q=${encodeURIComponent(query)}`);
           setSuggestions(response.data);
           setShowSuggestions(true);
         } catch (error) {

@@ -103,7 +103,7 @@ The platform supports **85+ Software Engineering courses** including Programme C
 |------------|---------|
 | **FastAPI** | High-performance Python web framework |
 | **SQLAlchemy ORM** | Database modeling and queries |
-| **PostgreSQL** | Persistent relational database (Render) |
+| **PostgreSQL** | Persistent relational database (Supabase) |
 | **SQLite** | Local development database |
 | **Cloudinary API** | Cloud file storage (PDFs & images) |
 | **Uvicorn** | ASGI server for FastAPI |
@@ -145,7 +145,7 @@ The platform supports **85+ Software Engineering courses** including Programme C
                ▼                          ▼
 ┌──────────────────────────┐   ┌──────────────────────────────────┐
 │   PostgreSQL Database     │   │      Cloudinary Storage          │
-│   (Render - Persistent)   │   │      (Free Tier - 25GB)          │
+│   (Supabase - Persistent)   │   │      (Free Tier - 25GB)          │
 ├──────────────────────────┤   ├──────────────────────────────────┤
 │ • Papers table (metadata) │   │ • Question Papers (PDF/Images)   │
 │ • Notes table (metadata)  │   │ • Study Notes (PDF/Images)       │
@@ -392,7 +392,7 @@ The frontend will be available at: `http://localhost:3000`
 | `CLOUDINARY_CLOUD_NAME` | Your Cloudinary cloud name | ✅ Yes |
 | `CLOUDINARY_API_KEY` | Your Cloudinary API key | ✅ Yes |
 | `CLOUDINARY_API_SECRET` | Your Cloudinary API secret | ✅ Yes |
-| `DATABASE_URL` | PostgreSQL connection string | Only for production |
+| `DATABASE_URL` | PostgreSQL connection string (Supabase) | Only for production |
 | `RENDER` | Set to `true` on Render platform | Only for production |
 
 ### Frontend (.env)
@@ -418,12 +418,14 @@ The frontend will be available at: `http://localhost:3000`
    - `CLOUDINARY_API_SECRET`
 6. Click **"Create Web Service"**
 
-### Deploy PostgreSQL on Render
+### Deploy PostgreSQL on Supabase (Free Forever)
 
-1. Click **"New +"** → **"PostgreSQL"**
-2. Choose **Free** plan
-3. Copy the **Internal Connection String**
-4. Add `DATABASE_URL` to your backend service environment variables
+1. Go to [Supabase](https://supabase.com) and create a free account
+2. Create a new project with a strong database password
+3. Go to **Settings → Database → Connection String → URI**
+4. Copy the connection string and replace `[YOUR-PASSWORD]`
+5. Add `DATABASE_URL` to your backend service environment variables
+6. **Note:** Supabase free tier never expires
 
 ### Deploy Frontend to Vercel
 
@@ -452,6 +454,7 @@ Connect your GitHub repository and set:
 | Search not working on live site | Hardcoded backend URL directly in frontend components |
 | Files uploaded as corrupted Base64 | Switched to direct file stream upload |
 | Special characters in slot names causing 404 | Added `clean_filename()` function to replace `+` with `_` |
+| Render free PostgreSQL expires after 90 days | Migrated to Supabase PostgreSQL (free forever) |
 
 ---
 
