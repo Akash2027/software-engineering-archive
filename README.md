@@ -6,8 +6,6 @@
 
 > A production-grade full-stack academic repository platform for Software Engineering students to search, upload, and download question papers and study notes across 85+ courses.
 
-![Project Banner](https://via.placeholder.com/1200x400/6366f1/white?text=Software+Engineering+Archive)
-
 ---
 
 ## 📑 Table of Contents
